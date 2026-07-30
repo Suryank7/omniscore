@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: OmniScore AI API Specification
+  description: OpenAPI 3.0 REST API documentation for OmniScore AI Web Gateway & FastAPI AI Microservice.
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+    description: Next.js Gateway Server
+  - url: http://localhost:8000/api/v1
+    description: Python FastAPI Microservice Engine
+paths:
+  /analyze:
+    post:
+      summary: Run full profile analysis on resume file or raw text
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+                resumeText:
+                  type: string
+                jobDescriptionId:
+                  type: string
+                githubUsername:
+                  type: string
+      responses:
+        '200':
+          description: Successful analysis result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalysisResult'
+
+  /connectors/linkedin:
+    post:
+      summary: Parse LinkedIn profile URL or structured JSON
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                profileInput:
+                  type: string
+      responses:
+        '200':
+          description: Parsed LinkedIn profile metrics
+
+  /connectors/tableau:
+    get:
+      summary: Fetch Tableau Public profile analytics
+      parameters:
+        - name: username
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Tableau Public author analytics
+
+components:
+  schemas:
+    AnalysisResult:
+      type: object
+      properties:
+        id:
+          type: string
+        scoreBreakdown:
+          type: object
+          properties:
+            overall:
+              type: integer
+            grade:
+              type: string

@@ -1,0 +1,575 @@
+@import "tailwindcss";
+
+/* ============================================
+   OmniScore AI — Enterprise Design System
+   Deep Navy + Emerald Green + Glass Morphism
+   ============================================ */
+
+:root {
+  /* Core Color Palette — Trust-inducing enterprise */
+  --navy-900: #0A1628;
+  --navy-800: #0F1D32;
+  --navy-700: #152540;
+  --navy-600: #1B2D4E;
+  --navy-500: #243B63;
+  --navy-400: #2D4A78;
+  --navy-300: #4A6FA5;
+  --navy-200: #7B9CC9;
+  --navy-100: #B4CCE4;
+  --navy-50: #E8F0F8;
+
+  --emerald-500: #10B981;
+  --emerald-400: #34D399;
+  --emerald-300: #6EE7B7;
+  --emerald-600: #059669;
+
+  --amber-500: #F59E0B;
+  --amber-400: #FBBF24;
+  --amber-600: #D97706;
+
+  --crimson-500: #EF4444;
+  --crimson-400: #F87171;
+  --crimson-600: #DC2626;
+
+  --orange-500: #F97316;
+
+  --cyan-500: #06B6D4;
+  --cyan-400: #22D3EE;
+
+  --purple-500: #8B5CF6;
+  --purple-400: #A78BFA;
+
+  /* Semantic Colors */
+  --color-emerald: var(--emerald-500);
+  --color-amber: var(--amber-500);
+  --color-crimson: var(--crimson-500);
+  --color-orange: var(--orange-500);
+
+  /* Glass Morphism */
+  --glass-bg: rgba(15, 29, 50, 0.6);
+  --glass-bg-light: rgba(15, 29, 50, 0.4);
+  --glass-border: rgba(74, 111, 165, 0.2);
+  --glass-border-light: rgba(74, 111, 165, 0.1);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+  /* Typography */
+  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", monospace;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 400ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Glow Effects */
+  --glow-emerald: 0 0 20px rgba(16, 185, 129, 0.3);
+  --glow-amber: 0 0 20px rgba(245, 158, 11, 0.3);
+  --glow-crimson: 0 0 20px rgba(239, 68, 68, 0.3);
+  --glow-cyan: 0 0 20px rgba(6, 182, 212, 0.3);
+  --glow-purple: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--navy-900);
+  color: var(--navy-50);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--navy-800);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--navy-500);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--navy-400);
+}
+
+/* ============================================
+   Glass Card Component
+   ============================================ */
+
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base), border-color var(--transition-base);
+}
+
+.glass-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  border-color: rgba(74, 111, 165, 0.35);
+}
+
+.glass-card-static {
+  background: var(--glass-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--glass-shadow);
+}
+
+/* ============================================
+   Score Gauge Glow Effects
+   ============================================ */
+
+.score-glow-emerald {
+  box-shadow: var(--glow-emerald);
+  border-color: rgba(16, 185, 129, 0.4);
+}
+
+.score-glow-amber {
+  box-shadow: var(--glow-amber);
+  border-color: rgba(245, 158, 11, 0.4);
+}
+
+.score-glow-crimson {
+  box-shadow: var(--glow-crimson);
+  border-color: rgba(239, 68, 68, 0.4);
+}
+
+.score-glow-cyan {
+  box-shadow: var(--glow-cyan);
+  border-color: rgba(6, 182, 212, 0.4);
+}
+
+/* ============================================
+   Animated Gradient Background
+   ============================================ */
+
+.gradient-bg {
+  background: linear-gradient(
+    135deg,
+    var(--navy-900) 0%,
+    var(--navy-800) 25%,
+    #0d2137 50%,
+    var(--navy-800) 75%,
+    var(--navy-900) 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* ============================================
+   Orb Decorations
+   ============================================ */
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  animation: orbFloat 20s ease-in-out infinite;
+}
+
+.orb-emerald {
+  background: var(--emerald-500);
+}
+
+.orb-purple {
+  background: var(--purple-500);
+}
+
+.orb-cyan {
+  background: var(--cyan-500);
+}
+
+@keyframes orbFloat {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(30px, -30px) scale(1.05); }
+  66% { transform: translate(-20px, 20px) scale(0.95); }
+}
+
+/* ============================================
+   Animated Score Ring
+   ============================================ */
+
+.score-ring {
+  transform: rotate(-90deg);
+}
+
+.score-ring-progress {
+  stroke-dasharray: 283;
+  stroke-dashoffset: 283;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  stroke-linecap: round;
+}
+
+/* ============================================
+   Pulse Animation
+   ============================================ */
+
+.pulse-dot {
+  animation: pulseDot 2s ease-in-out infinite;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.2); }
+}
+
+/* ============================================
+   Skeleton Loading
+   ============================================ */
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--navy-700) 0%,
+    var(--navy-600) 50%,
+    var(--navy-700) 100%
+  );
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s infinite;
+  border-radius: var(--radius-sm);
+}
+
+@keyframes skeletonShimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================
+   File Dropzone
+   ============================================ */
+
+.dropzone {
+  border: 2px dashed var(--navy-400);
+  border-radius: var(--radius-lg);
+  transition: all var(--transition-base);
+  cursor: pointer;
+}
+
+.dropzone:hover,
+.dropzone.drag-over {
+  border-color: var(--emerald-500);
+  background: rgba(16, 185, 129, 0.05);
+  box-shadow: inset 0 0 30px rgba(16, 185, 129, 0.05);
+}
+
+.dropzone.has-file {
+  border-color: var(--emerald-500);
+  border-style: solid;
+  background: rgba(16, 185, 129, 0.08);
+}
+
+/* ============================================
+   Button Styles
+   ============================================ */
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--emerald-500), var(--emerald-600));
+  color: white;
+  font-weight: 600;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+  font-size: 15px;
+  letter-spacing: 0.01em;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+  background: linear-gradient(135deg, var(--emerald-400), var(--emerald-500));
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.btn-secondary {
+  background: var(--navy-600);
+  color: var(--navy-100);
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--glass-border);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: 14px;
+}
+
+.btn-secondary:hover {
+  background: var(--navy-500);
+  border-color: var(--navy-300);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--navy-200);
+  font-weight: 500;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: 14px;
+}
+
+.btn-ghost:hover {
+  background: rgba(74, 111, 165, 0.1);
+  color: var(--navy-50);
+}
+
+/* ============================================
+   Skill Badges
+   ============================================ */
+
+.skill-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.skill-badge-matched {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--emerald-400);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.skill-badge-missing {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--crimson-400);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.skill-badge-partial {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--amber-400);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.skill-badge-neutral {
+  background: rgba(74, 111, 165, 0.15);
+  color: var(--navy-200);
+  border: 1px solid rgba(74, 111, 165, 0.3);
+}
+
+/* ============================================
+   Priority Badges
+   ============================================ */
+
+.priority-high {
+  background: rgba(239, 68, 68, 0.15);
+  color: var(--crimson-400);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+}
+
+.priority-medium {
+  background: rgba(245, 158, 11, 0.15);
+  color: var(--amber-400);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.priority-low {
+  background: rgba(6, 182, 212, 0.15);
+  color: var(--cyan-400);
+  border: 1px solid rgba(6, 182, 212, 0.25);
+}
+
+/* ============================================
+   Finding Type Indicators
+   ============================================ */
+
+.finding-positive { color: var(--emerald-400); }
+.finding-warning { color: var(--amber-400); }
+.finding-negative { color: var(--crimson-400); }
+
+/* ============================================
+   Tab Navigation
+   ============================================ */
+
+.tab-inactive {
+  color: var(--navy-300);
+  border-bottom: 2px solid transparent;
+  padding-bottom: 8px;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.tab-inactive:hover {
+  color: var(--navy-100);
+}
+
+.tab-active {
+  color: var(--emerald-400);
+  border-bottom: 2px solid var(--emerald-400);
+  padding-bottom: 8px;
+  font-weight: 600;
+}
+
+/* ============================================
+   Sidebar Navigation
+   ============================================ */
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: var(--radius-md);
+  color: var(--navy-300);
+  transition: all var(--transition-fast);
+  font-weight: 500;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.sidebar-link:hover {
+  background: rgba(74, 111, 165, 0.1);
+  color: var(--navy-100);
+}
+
+.sidebar-link-active {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--emerald-400);
+  border-right: 3px solid var(--emerald-500);
+}
+
+/* ============================================
+   Input Styles
+   ============================================ */
+
+.input-field {
+  background: var(--navy-700);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  padding: 10px 14px;
+  color: var(--navy-50);
+  font-size: 14px;
+  transition: all var(--transition-fast);
+  outline: none;
+  width: 100%;
+}
+
+.input-field:focus {
+  border-color: var(--emerald-500);
+  box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--navy-400);
+}
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(20px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-slide-in {
+  animation: slideInRight 0.4s ease-out forwards;
+}
+
+.animate-scale-in {
+  animation: scaleIn 0.3s ease-out forwards;
+}
+
+/* Staggered children animation */
+.stagger-children > * {
+  opacity: 0;
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.stagger-children > *:nth-child(1) { animation-delay: 0.05s; }
+.stagger-children > *:nth-child(2) { animation-delay: 0.1s; }
+.stagger-children > *:nth-child(3) { animation-delay: 0.15s; }
+.stagger-children > *:nth-child(4) { animation-delay: 0.2s; }
+.stagger-children > *:nth-child(5) { animation-delay: 0.25s; }
+.stagger-children > *:nth-child(6) { animation-delay: 0.3s; }
+.stagger-children > *:nth-child(7) { animation-delay: 0.35s; }
+.stagger-children > *:nth-child(8) { animation-delay: 0.4s; }
+
+/* ============================================
+   Responsive
+   ============================================ */
+
+@media (max-width: 768px) {
+  .glass-card, .glass-card-static {
+    border-radius: var(--radius-md);
+  }
+  
+  .btn-primary {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
